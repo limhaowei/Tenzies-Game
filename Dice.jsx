@@ -4,6 +4,10 @@ export default function Dice(props){
         backgroundColor: props.isHeld ? "#59E391" : "white"
     }
     return(
-        <button style={styles}>{props.value}</button>
+        <button 
+            onClick={() => props.hold(props.id)} 
+            //onClick={props.hold}
+            style={styles}
+        >{props.value}</button>
     )
 }
