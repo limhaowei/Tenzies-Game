@@ -13,6 +13,11 @@ export default function App(){
         return arr
     }
 
+    function rollDice(){
+        setDiceValues(generateAllNewDice())
+    }
+
+
     return(
         <main>
             <div className="dice-container">
@@ -20,6 +25,7 @@ export default function App(){
                     <Dice key={index} value={value} />
                 ))}
             </div>
+            <button className="roll-dice" onClick={rollDice}>Roll</button>
         </main>
     )
 }
