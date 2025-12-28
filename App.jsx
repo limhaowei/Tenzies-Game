@@ -8,7 +8,7 @@ export default function App(){
     function generateAllNewDice(){
         const arr = []
         for(let i = 0; i < 10; i ++){
-            arr.push(Math.floor(Math.random() * 6) + 1);
+            arr.push({value: Math.floor(Math.random() * 6) + 1, isHeld: false})
         }
         return arr
     }
@@ -21,8 +21,8 @@ export default function App(){
     return(
         <main>
             <div className="dice-container">
-                {diceValues.map((value, index) => (
-                    <Dice key={index} value={value} />
+                {diceValues.map((dice, index) => (
+                    <Dice key={index} value={dice.value} isHeld={dice.isHeld} />
                 ))}
             </div>
             <button className="roll-dice" onClick={rollDice}>Roll</button>
