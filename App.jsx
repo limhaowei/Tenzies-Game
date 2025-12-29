@@ -5,6 +5,10 @@ export default function App(){
 
     const [ diceValues, setDiceValues ] = useState(generateAllNewDice())
 
+    // We can derive the gameWon status based on the condition(s) of the current dice state on every render.
+    // we don't need to create a state for gameWon
+    const gameWon = diceValues.every(die => die.isHeld) && diceValues.every(die => die.value === diceValues[0].value)
+
     function generateAllNewDice(){
         const arr = []
         for(let i = 0; i < 10; i ++){
@@ -43,7 +47,9 @@ export default function App(){
                     />
                 ))}
             </div>
-            <button className="roll-dice" onClick={rollDice}>Roll</button>
+            <button className="dice-roll" onClick={rollDice}>
+                {gameWon ? "New Game" : "Roll"}
+            </button>
         </main>
     )
 }
