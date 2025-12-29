@@ -1,7 +1,6 @@
 import Dice from "./Dice"
 import { useState, useRef, useEffect } from "react"
 import Confetti from "react-confetti"
-import { useEffect } from "react"
 
 export default function App(){
 
