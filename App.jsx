@@ -4,7 +4,7 @@ import Confetti from "react-confetti"
 
 export default function App(){
 
-    const [ diceValues, setDiceValues ] = useState(generateAllNewDice())
+    const [ diceValues, setDiceValues ] = useState(() => generateAllNewDice()) //lazy state init
 
     // We can derive the gameWon status based on the condition(s) of the current dice state on every render.
     // we don't need to create a state for gameWon
@@ -21,9 +21,14 @@ export default function App(){
 
     function rollDice(){
         //setDiceValues(generateAllNewDice())
-        setDiceValues(prev => prev.map((item) => 
-            item.isHeld ? item : {...item, value: Math.floor(Math.random() * 6) + 1}
-        ))
+        if(gameWon) {
+            setDiceValues(generateAllNewDice())
+        } else {
+            // alternatively can make another button that will render conditionally but that takes more work lol
+            setDiceValues(prev => prev.map((item) => 
+                item.isHeld ? item : {...item, value: Math.floor(Math.random() * 6) + 1}
+            ))
+        }
     }
 
     function hold(id){
