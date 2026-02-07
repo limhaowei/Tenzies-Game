@@ -1,5 +1,3 @@
-# Those who snow.
-
 # Getting Started
 Install the dependencies and run the project
 ```
